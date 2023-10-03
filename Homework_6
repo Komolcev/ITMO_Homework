@@ -37,7 +37,7 @@
 #     return arr1, arr2, arr3
 
 
-s = str(input())
-vivod = symbol(s)
-for i in vivod:
-    print(*(sorted(set(i))))
+# s = str(input())
+# vivod = symbol(s)
+# for i in vivod:
+#     print(*(sorted(set(i))))
