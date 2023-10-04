@@ -1,13 +1,35 @@
-# 7-1:
-# НОК = (A * B) / НОД
-a, b = map(int, input('Введите 2 числа через пробел: ').split())
-x = a * b
-# Нахоdим НОД (наибольший общий делитель):
-while b > 0:
-    a = b
-    b = a % b
-# Находим НОК:
-print(int(x / a))
+def find_lcm(*args):
+    # Функция для вычисления НОД
+    def find_gcd(a, b):
+        while b:
+            a, b = b, a % b
+        return a
+
+    # Функция для вычисления НОК
+    def find_lcm_two_numbers(x, y):
+        return (x * y) // find_gcd(x, y)
+
+    # Инициализируем НОК первых двух чисел
+    lcm = args[0]
+
+    # Вычисляем НОК для остальных чисел по очереди
+    for i in range(1, len(args)):
+        lcm = find_lcm_two_numbers(lcm, args[i])
+
+    return lcm
+
+
+# Запрашиваем числа у пользователя
+numbers = input("Введите числа через пробел: ").split()
+
+# Преобразуем строки в целые числа
+numbers = [int(num) for num in numbers]
+
+# Вызываем функцию find_lcm, передавая в нее список чисел в качестве аргументов
+lcm_result = find_lcm(*numbers)
+
+# Выводим результат
+print("Наименьшее общее кратное (НОК):", lcm_result)
 
 
 # 7-2:
@@ -21,9 +43,13 @@ def code(string, n):
     new_str = []
     for i in string:
         if i in arr1:
-            new_str.append(arr1[i]+n)
+            shifted_value = (arr1[i] + n - 1) % 26
+            new_char = chr(shifted_value + ord('A'))
+            new_str.append(new_char)
         elif i in arr2:
-            new_str.append(arr2[i]+n)
+            shifted_value = (arr2[i] + n - 1) % 26
+            new_char = chr(shifted_value + ord('a'))
+            new_str.append(new_char)
         else:
             new_str.append(i)
     return new_str
@@ -34,35 +60,20 @@ n = int(input('Введите число, на которое будет сдв�
 print(''.join(map(str, code(string, n))))
 
 
-# 7-3:
-# Кривой, косой, зато свой код!
-# Долго не мог понять как числа попадают в двумерный массив на вход. Потом решил все же сделать так,
-# Что пользователь сам вводит числа и они уже разбиваются на вложенные подмассивы.
-def maximum_number(numbers):
-    arr1 = []
-    maximum = 0
-    maximum_position = 0
-    arr2 = []
-    split_numbers = numbers.split()
-    for num in split_numbers:
-        arr1.append(list(map(int, num)))
-
-    for _ in range(3):
-        for i in range(len(arr1)):
-            sublist = arr1[i]
-            temp_max = max(sublist)
-            if temp_max > maximum:
-                maximum = temp_max
-                maximum_position = i
-
-        arr2.append(maximum)
-        arr1[maximum_position].remove(maximum)
-
-        maximum = 0
-        maximum_position = 0
-
-    return arr2
+def max3(x):
+    # Преобразуем двумерный список в одномерный
+    flattened = [num for sublist in x for num in sublist]
+    sorted_nums = sorted(set(flattened), reverse=True)  # Сортируем числа
+    return sorted_nums[:3]  # Возвращаем первые три самых больших числа
 
 
-numbers = input("Введите числа через пробел: ")
-print(maximum_number(numbers))
+n = int(input())
+m = int(input())
+x = []
+for i in range(n):
+    x.append([])
+    for j in range(m):
+        x[i].extend(input())
+
+result = max3(x)
+print(*result[::-1])
