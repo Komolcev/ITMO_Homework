@@ -22,17 +22,19 @@ print(''.join(genetics(arr1)))
 
 
 # 8-2:
-lst = [[1, 3], [0], [1], [14, 23, 5297], [44, 666], [7, 8, 9, 0, 10]]
+list = [[1, 5, 3], [2, 44, 66, 1, 4], [53333, 5], [7, 9, 8, 9]]
+# Функция для вычисления общего количества цифр в подсписке
 
 
-def s(x):
-    return (-len(x), -sum(x))
+def count_digits(sublist):
+    return sum(map(lambda x: len(str(x)), sublist))
 
 
-lst.sort(key=s)
-for i in lst:
-    i.sort(reverse=True)
-print(lst)
+# Сортировка каждого подсписка по убыванию
+sorted_sublists = [sorted(sublist, reverse=True) for sublist in list]
+# Сортировка внешнего списка по возрастанию общего количества цифр в каждом подсписке
+sorted_list = sorted(sorted_sublists, key=count_digits)
+print(sorted_list)
 
 
 # 8-3:

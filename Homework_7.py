@@ -64,17 +64,13 @@
 # 7-3:
 def process_array(arr1):
     arr2 = []
-    for sublist in arr1:
-        for num in sublist:
-            if num <= 10:
-                arr2.append(num)
-            else:
-                # Changed append to extend
-                arr2.extend([int(digit) for digit in str(num)])
-    arr2.sort()
+    for i in arr1:
+        for j in i:
+            arr2.append(j)
+    arr2 = sorted(arr2)
     return arr2[-3:]
 
 
-arr1 = [[2, 6, 9], [4, 7, 4], [13, 23, 17]]
+arr1 = [[2, 6, 0, 13], [4, 7, 4], [9, 23, -2, 17, 14]]
 result = process_array(arr1)
 print(result)
