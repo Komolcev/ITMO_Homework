@@ -61,16 +61,16 @@
 # print(''.join(map(str, code(string, n))))
 
 
-# 7-3:
-def process_array(arr1):
-    arr2 = []
-    for i in arr1:
-        for j in i:
-            arr2.append(j)
-    arr2 = sorted(arr2)
-    return arr2[-3:]
+# # 7-3:
+# def process_array(arr1):
+#     arr2 = []
+#     for i in arr1:
+#         for j in i:
+#             arr2.append(j)
+#     arr2 = sorted(arr2)
+#     return arr2[-3:]
 
 
-arr1 = [[2, 6, 0, 13], [4, 7, 4], [9, 23, -2, 17, 14]]
-result = process_array(arr1)
-print(result)
+# arr1 = [[2, 6, 0, 13], [4, 7, 4], [9, 23, -2, 17, 14]]
+# result = process_array(arr1)
+# print(result)

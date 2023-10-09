@@ -186,14 +186,14 @@
 # print(dct)
 
 
-# Проверка на анаграммность
-p, q = input().split()
-pp, qq = {}, {}
-for i in p:
-    pp[i] = pp.get(i, 0) + 1
-for i in q:
-    qq[i] = qq.get(i, 0) + 1
-print(pp == qq)
+# # Проверка на анаграммность
+# p, q = input().split()
+# pp, qq = {}, {}
+# for i in p:
+#     pp[i] = pp.get(i, 0) + 1
+# for i in q:
+#     qq[i] = qq.get(i, 0) + 1
+# print(pp == qq)
 
 
 # Важная задача на словари

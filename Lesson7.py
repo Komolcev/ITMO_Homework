@@ -2,24 +2,27 @@
 # print(({1,2,3,4,5,'1,2,3'}).pop())
 # print(({1,2,3,4,5,'123',(1,2,3)}).add(1))
 
+
 # tes = {1,2,3,4,5, '123', (1,2,3)}
 # print(tes.add(1))
 # print(tes)
 
 
 # Множества были 2-3 урока назад, если что
-# то, что лежит во множестве не повторяется
-# объяляются в круглых скобках
-# Питонист.ру
+# То, что лежит во множестве, не повторяется
+# Объявляются в круглых скобках
+
 
 # [] - массив
 # () - кортеж = tuple
 # {} - словарь
 # () - множество = set
 
+
 # def pod_nalog(dokhod):
 #     result = int(dochod * 0.13)
 #     return result
+
 
 # while True:
 #     dochod = int(input('Введите значение: '))
@@ -30,6 +33,7 @@
 # def pod_nalog(dokhod, percent = 13):
 #     result = dokhod * percent / 100
 #     return result
+
 
 # while True:
 #     dokhod1 = float(input('Введите: '))
@@ -46,7 +50,7 @@
 # my_function(123, 111, 333, 555, 777, 999)
 
 
-# # функция принимающая много аргументов!
+# # Функция, принимающая много аргументов!
 # def multi(*args):
 #     res = 1
 #     for i in args:
@@ -54,14 +58,19 @@
 #     return res
 # print(multi(100, 200))
 
-# # ?????????????????!!!!!!!!!!!!!!!!!!!!!!!!
+
 # def multi(**kwargs):
 #     print(kwargs)
 #     res = 1
 #     for i, j in kwargs.items():
-#         res *= j
+#         if isinstance(j, int):
+#             res *= j
 #     return res
-# print(multi(a = 100, b = '200'))
+# print(multi(a = 100, b = 200))
+# Эта функция принимает произвольное количество именованных аргументов.
+# Она выводит переданные аргументы на экран и затем перемножает все целочисленные аргументы,
+# возвращая полученное произведение. В данном случае, функция принимает аргументы "a" со значением
+# 100 и "b" со значением 200, выводит их на экран и возвращает их произведение, то есть 100 * 200 = 20 000
 
 
 # def multi(**kwargs):
@@ -104,14 +113,13 @@
 # all_args(1)
 
 
-# # Женя написала
 # def nalog(dochod, *args):
 #     for i in args:
 #         print(int(dochod * i / 100))
 #     return
 # x = int(input())
 # print(nalog (x, 13, 15, 20))
-# # (13, 15, 20)
+# # (от 100 - 13, 15, 20)
 
 
 # def uni_let(lst):
@@ -119,21 +127,24 @@
 #     string = ''.join(sorted(set(s)))
 #     return string, len(string)
 
+
 # print(uni_let(['All', 'you', 'need', "is", 'love']))
 # print(uni_let(['AbracadabrA']))
 
 
-# # ???????????????????????
 # def function(n):
 #     def function1(p):
 #         return p*p
-
 #     def function2(w):
 #         return w*w
 #     if n < 10:
+#         p = n
 #         return function1(p)
 #     else:
+#         w = n
 #         return function2(w)
+# n = int(input('Введите число: '))
+# print(function(n))
 
 
 # n = int(input())
