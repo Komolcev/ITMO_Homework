@@ -27,7 +27,7 @@ for _ in range(50):
 
 
 
-13-3:
+# 13-3:
 def odd_numbers(input_list):
     for num in input_list:
         if num % 2 != 0:
