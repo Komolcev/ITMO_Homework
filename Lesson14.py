@@ -26,18 +26,18 @@
 #     print(next(gen), end = ',')
 
 
+# import math
 # def divide(x, y):
 #     try:
 #         out = x/y
 #     except:
 #         try:
-#             important math
 #             out = math.inf* x / abs(x)
 #         except:
 #             out = None
 #     finally: # Try, exept and finally
 #         return out
-# print(divide(0,0))
+# print(divide(10,2))
 
 
 # # Исключения
@@ -94,10 +94,10 @@
 #     yield 1
 #     yield 2
 #     yield 3
-# # print(*rep123())
-# # print(4 in rep123())
-# # n1, n2, n3 = rep123()
-# # print(n1,n2,n3)
+# print(*rep123())
+# print(4 in rep123())
+# n1, n2, n3 = rep123()
+# print(n1,n2,n3)
 # gen = rep123()
 # print(2 in gen)
 # print(next(gen))
@@ -123,20 +123,28 @@
 # print(*fg2())
 
 
+# # *[ЧТО, В КАКОМ ДИАПОЗОНЕ, С КАКИМ УСЛОВИЕМ.]
+# # *[i for i in range(10) if i % 2 == 0]
 # lc = (i for i in range(10))
+# # for i in range(10):
+# #     lc += i
 # for i in lc:
 #     print(i)
 
 
 # def inte(n):
-#     for i in range(n): yield i
+#     for i in range(n):
+#         yield i
 # def evens(iterable):
 #     for i in iterable:
-#         if i % 2 == 0: yield i
+#         if i % 2 == 0:
+#             yield i
 # def sq(iterable):
-#     for i in iterable: yield i * i
+#     for i in iterable:
+#         yield i * i
 # chain = sq(evens(inte(10)))
-# print(*chain)
+# for i in range(5):
+#     print(next(chain))
 
 
 # def numb(a = 65, z = 91):
@@ -153,13 +161,13 @@
 # # Путешествие хоббита туда и обратно
 # # Раскладывается от 3х до нуля и потом обратно от нуля до 3х
 # def funct(n):
-#     print(111, 'funct', n)
+#     print(111, 'f1', n)
 #     n -= 1
 #     if n > 0:
 #         funct(n)
-#     print(222, 'cnuf', n)
+#     print(222, 'f2', n)
 #     return
-# funct(3)
+# print(funct(2))
 
 
 # def fact(n):
@@ -168,13 +176,27 @@
 #     else:
 #         return n * fact(n-1)
 # print(fact(1))
+# fact(n-1) 177 стр это = 1 от fact(1) 173 стр, а не 1-1(fact(n-1) 177 стр)
 
 
-def sum(n):
-    if n == 1:
-        return 1
-    else:
-        return n + sum(n-1)
+# Тоже самое, что и сверху, только считается сумма, а не вакториал
+# def sum(n):
+#     if n == 1:
+#         return 1
+#     else:
+#         return n + sum(n-1)
+# print(sum(5))
 
 
-print(sum(5))
+# def div(x,y):
+#     return x / y
+# try:
+#     d = {1:11}
+#     print(d[1])
+#     result = div(100, 10)
+#     print (result)
+# except ZeroDivisionError as e:
+#     print('Ошибка деления!', e)
+# except KeyError as e:
+#     print('Ключ', e)
+# # KeyEror - такого ключа нет!
