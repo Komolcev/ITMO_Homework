@@ -127,33 +127,54 @@
 # for i in res:
 #     print(i.group(), i.start(), i.end())
 
-# #  ! надо еще раз поосмтреть конец второй лекции
+
+# # Код должен корректно считать количество замен и заменять все `a` на `A` с порядковыми номерами:
 # import re
-# # def fu(text):
-# counter = 0
-# def change(x):
+# def fu(text):
 #     counter = 0
-#     nonlocal counter
-#     counter += 1
-#     return 'A' + str(counter)
-# res = re.sub(r'a', change, text)
-# print(res)
+#     def change(x):
+#         nonlocal counter
+#         counter += 1
+#         return 'A' + str(counter)
+#     res = re.sub('a', change, text)
+#     return res
 # print(fu('aaaaaaaaaaaaaaaaaa'))
+
+
+# # Эта функция ищет все совпадения с шаблоном "a" в строке "text" и выводит номер совпадения,
+# # само совпадение, а также индексы начала и конца этого совпадения в строке.
+# import re
+# text = 'abracadabra'
+# res = re.finditer(r'a', text)
+# for j, i in enumerate(res):
+#     print(j, i.group(), i.start(), i.end())
+
+
+# import re
+# def fu(text):
+#     counter = 0
+#     def change (x):
+#         nonlocal counter
+#         counter += 1
+#         return 'A'+str(counter)
+#     return re.sub(r'a', change, text)
+# print(fu('abracadabra'))
+
+
 
 
 # # Буква повторяется два и более раз
 # import re
-# text = 'Гамма Адажио Аллегро Нота До Ре Форте Си'
+# text = 'Гамма Адажио Аллегро Нота До Ре Фортиссимо'
 # res = re.findall(r'\b\w+\b', text)
 # import collections
 # for i in res:
 #     x = collections.Counter(i).values()
-#     # print(x)
 #     if max(x) > 1:
 #         print(i, max(x))
 
 
-# #  ! надо еще раз поосмтреть конец второй лекции
-from re import split
-text = '1         +2222 * 3  - 7'
-print(re.split(r'[\s+' -/], text))
+
+# import re
+# text = '1         + 2222 * 3  -  7'
+# print(re.split(r'\s+', text))
