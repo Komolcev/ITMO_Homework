@@ -14,7 +14,6 @@
 # print(re.findall(r"\w*b[aioeu]t\w* \w* \w* \w*", st))
 
 
-
 # # ДЗ 15-1:
 # import re
 # dct = {1: 1, 2: 2, 3: {2: 22, 3: {1: 111, 2: 222, 3: {0: 1111, 1: 2222, 2: 3333}}, 1: 11, }, 6: 22}
@@ -68,7 +67,6 @@
 # text = 'Коля Миша Таня Петя'
 # res = re.sub(r'\b\w{4}\b', fullname, text)
 # print(res)
-
 
 
 # import re
@@ -161,8 +159,6 @@
 # print(fu('abracadabra'))
 
 
-
-
 # # Буква повторяется два и более раз
 # import re
 # text = 'Гамма Адажио Аллегро Нота До Ре Фортиссимо'
@@ -174,7 +170,131 @@
 #         print(i, max(x))
 
 
-
 # import re
 # text = '1         + 2222 * 3  -  7'
 # print(re.split(r'\s+', text))
+
+
+# import re
+# text = '1,2.3:4;5!6?7'
+# print(re.split(r'[,.:;!?]', text))
+
+
+# import re
+# text = 'Раз, !два, ?три'
+# print(re.split(r'[,.:;!?]+', text))
+
+
+# import re
+# text = '11111122222233333334444567'
+# x = 4
+# print(re.findall(rf '{x}', text))
+
+
+# В данном коде происходит поиск всех символов, которые являются пробелом, запятой, точкой, двоеточием,
+# точкой с запятой или восклицательным или вопросительным знаком в строке text.
+# import re
+# text = '1111111.11222223 3344445555'
+# print(re.findall(rf'[ ,.:;!?]', text))
+
+
+# import re
+# text = '1111111112222233344445555'
+# for i in range (1, 6):
+#     print(re.findall(rf'{i}', text))
+
+
+# * Декораторы:
+# * Ведение протокола операции (журналирование)
+# * Обеспечение контроля за доступом  аутентификацией
+# * Хронометраж
+# * Ограничение частоты вызова Api
+# * Кеширование
+
+
+# # Функция вызывается от другой функции:
+# def funct(f):
+#     return f
+# def hello():
+#     print('Привет!')
+# hello()
+# a = funct(hello)
+# a()
+
+
+# # Функция в функции, которая возвращает нижний регистр
+# def speak(text):
+#     def whisper(t):
+#         return t.lower()
+#     res = whisper (text)
+#     return res
+# print(speak('Hello World!'))
+
+
+# # return whisper относится к функции speak!
+# def speak():
+#     def whisper(t):
+#         return t.lower()
+#     return whisper
+# wr = speak()
+# print(wr('Hello World!'))
+
+
+# def speak(text):
+#     def whisper():
+#         return text.lower() + '....'
+#     return whisper
+# f = speak('Hello World')
+# print(f())
+# b = speak('Wellcome')
+# print(b())
+
+
+# def null_decorator(funct):
+
+#     return funct
+# def hello():
+#     print('Hello World!')
+# hello = null_decorator(hello)
+# hello()
+
+
+# def sample_decorator(funct):
+#     def wrapper(): # Классическое название декоратора
+#         print('Начало функции')
+#         funct()
+#         print('Конец функции')
+#     return wrapper
+
+# def say():
+#     print('Привет!')
+
+# say = sample_decorator(say)
+# say()
+# def bye():
+#     print('bye!')
+# bye = sample_decorator(bye)
+# bye()
+# # То есть мы саму функцию bye и say не трогаем, мы обкладываем их функцией sample_decorator
+# # То есть вкладываем одну функцию в другую
+# # Возвращается модицифировання функция, одно вкладываем в другое
+
+
+# def uppercase_deco(func):
+#     def wrapper():
+#         or_res = func()
+#         modi = or_res.upper()
+#         print('Сверху ДО')
+#         print('Снизу ПОСЛЕ')
+#         return modi
+#     return wrapper
+
+
+# # @uppercase_deco # Но так мы h теряем безвозвратно
+# def h():
+#     return 'Hello :)'
+
+
+# print(h())  # ДО
+# h = uppercase_deco(h)
+# print(h())
