@@ -1,19 +1,22 @@
-# # 15-1:
-# import re
-# dct = {1: 1, 2: 2, 3: {2: 22, 3: {1: 111, 2: 222, 3: {0: 1111, 1: 2222, 2: 3333}}, 1: 11, }, 6: 22}
-# def get_values(dct, x):
-#     values = []
-#     for key, value in dct.items():
-#         if key == x:
-#             values.append(value)
-#         elif isinstance(value, dict):
-#             values.extend(get_values(value, x))
-#         elif isinstance(value, int) and not isinstance(value, bool):
-#             pass
-#     return values
-# x = int(input('Ключ: '))
-# result = get_values(dct, x)
-# print(result)
+# 15-1:
+import re
+dct = {1: 1, 2: 2, 3: {2: 22, 3: {1: 111, 2: 222,
+                                  3: {0: 1111, 1: 2222, 2: 3333}}, 1: 11, }, 6: 22}
+x = int(input('Ключ: '))
+
+
+def dct_val(dct, x):
+    r = []
+    for k, v in dct.items():
+        if k == x:
+            r.append(v)
+        if type(v) == dict:
+            s = dct_val(v, x)
+            r.extend(s)
+    return r
+
+
+print(*dct_val(dct, x), sep='\n')
 
 
 # # 15-2:
