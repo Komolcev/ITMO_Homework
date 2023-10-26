@@ -1,33 +1,32 @@
-# 16-1:
+# # 16-1:
+# import re
+# def generate_acronym(text):
+#     words = re.findall(r'\b\w', text)
+#     acronym = ''.join(words).upper()
+#     return acronym
+# sentence = input(str('Введите строку: '))
+# acronym = generate_acronym(sentence)
+# print(acronym)
+
+
+# ДЗ 16-2:
 import re
-
-
-def generate_acronym(text):
-    words = re.findall(r'\b\w', text)
-    acronym = ''.join(words).upper()
-    return acronym
-
-
-sentence = input(str('Введите строку: '))
-
-acronym = generate_acronym(sentence)
-print(acronym)
-
-
-# 16-2:
-
-
-def find_positive_numbers(num, arr):
-    pattern = r'\b(?:[0-9]|[1-{}][0-9])\b(?![0-9])'.format(num, num)
-    matches = re.findall(pattern, ' '.join(map(str, arr)))
-    return list(map(int, matches))
-
-
-num = int(input('Введите положительное целое число: '))
-arr1 = [0, 1, 5, 10, 15, 99, 20, 25, 30, 45, 60, 1, 70, 80, 100]
-result = find_positive_numbers(num, arr1)
-result = [x for x in result if x != num]
-print(' '.join(map(str, result)))
+n = int(input('--->'))
+x, y = divmod(n, 10)  # * Замена // и %
+r = []
+r.append(r'\b\d\b')  # от 0 до 9
+r.append(r'\b10\b')  # 10
+if n == 10:
+    regex = '|'.join(r[:2])
+elif n < 20:
+    r.append(rf'\b1[0-{y}]\b')  # от 10 до 19
+    regex = '|'.join(r[:3])
+else:
+    r.append(rf'\b[1-{x-1}]\d\b')  # от 10 до 39
+    # от 40 до 45, а если написать {y-1}, тогда будет не включая
+    r.append(rf'\b{x}[0-{y}]\b')
+    regex = '|'.join(r[:4])
+print(*re.findall(regex, str(list(range(200)))))
 
 
 # # 16-3:
