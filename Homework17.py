@@ -38,7 +38,7 @@ def up(*args, **kwargs):
 result = up('hi', 54, 'python', **{'1': 'Red', '2': "Blue", '3': 4})
 
 
-# 13-1:
+# 17-3:
 class Shape:
     def __init__(self, color, square):
         self.color = color
