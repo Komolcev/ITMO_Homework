@@ -114,27 +114,24 @@
 
 
 # 20-3:
-# Импортировал модуль time чтобы засечь время (просто забавно смотреть, как глупая машина работает :) )
 import itertools
-import time
 
 n = int(input('Введите количество необходимых комбинаций: '))
 
 
 class InfiniteSequence:
     def __init__(self):
-        self.seq = itertools.cycle(range(10))
+        self.seq = itertools.count(1)
         self.letters = itertools.cycle('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
 
     def get_next(self):
-        return str(next(self.seq)) + next(self.letters)
+        number = next(self.seq)
+        if number > 26:
+            self.seq = itertools.count(1)
+            next(self.letters)
+        return str(number) + ' ' + next(self.letters)
 
 
 sequence = InfiniteSequence()
-start_time = time.time()
-for _ in range(n):
+for i in range(n):
     print(sequence.get_next(), end=' ')
-end_time = time.time()
-
-execution_time = end_time - start_time
-print('\nВремя выполнения кода: ', execution_time)
