@@ -81,4 +81,4 @@ print(" -> ".join(str(x) for x in path), "=", total)
 # select * from book
 # select book_title from book where publisher_id = 100
 # select book_title from book where publisher_id = 103
-# SELECT * FROM test2 WHERE pages >= 400;
+# SELECT * FROM book WHERE pages >= 400;
