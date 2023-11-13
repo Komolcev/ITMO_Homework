@@ -1,31 +1,38 @@
 # # 23-1:
-# import psycopg2
-# import pandas as pd
+def longest_palindrome_substring(s):
+    # Создаем таблицу размером NxN, где N - длина строки s
+    n = len(s)
+    dp = [[False] * n for _ in range(n)]
 
-# def longest_palindrome(s):
-#     n = len(s)
-#     m = [[0] * n for _ in range(n)]
+    # Разные начала
+    max_length = 1
+    start = 0
+    for i in range(n):
+        dp[i][i] = True
 
-#     for i in range(n):
-#         m[i][i] = 1
+    # Проверяем все пары символов в строке
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            dp[i][i+1] = True
+            max_length = 2
+            start = i
 
-#     max_length = 1
+    # Проверяем все подстроки длины более 2
+    for length in range(3, n+1):
+        for i in range(n-length+1):
+            j = i + length - 1
+            if s[i] == s[j] and dp[i+1][j-1]:
+                dp[i][j] = True
+                max_length = length
+                start = i
 
-#     for cl in range(2, n + 1):
-#         for i in range(n - cl + 1):
-#             j = i + cl - 1
-#             if s[i] == s[j] and cl == 2:
-#                 m[i][j] = 2
-#             elif s[i] == s[j]:
-#                 m[i][j] = m[i + 1][j - 1] + 2
-#             else:
-#                 m[i][j] = max(m[i][j - 1], m[i + 1][j])
-#             max_length = max(max_length, m[i][j])
-#     return max_length
+    # Возвращаем самую длинную палиндромную подстроку
+    return s[start:start+max_length]
 
-# input_str = 'aaabaaac'
-# result = longest_palindrome(input_str)
-# print(f"Длина наибольшей подстроки-палиндрома: {result}")
+
+s = input("Введите строку: ")
+longest_palindrome = longest_palindrome_substring(s)
+print("Самая длинная палиндромная подстрока:", longest_palindrome)
 
 
 # # 23-2:
@@ -57,7 +64,7 @@
 # conn = psycopg2.connect(
 #     database='postgres',
 #     user='postgres',
-#     password='4380',
+#     password=
 #     host='127.0.0.1',
 #     port='5433'
 # )
@@ -79,20 +86,20 @@
 
 
 # # 23-3:
-from functools import cmp_to_key
+# from functools import cmp_to_key
 
 
-def largest_number(nums):
-    def compare(x, y):
-        return int(x + y) - int(y + x)
+# def largest_number(nums):
+#     def compare(x, y):
+#         return int(x + y) - int(y + x)
 
-    sorted_nums = sorted(map(str, nums), key=cmp_to_key(compare), reverse=True)
+#     sorted_nums = sorted(map(str, nums), key=cmp_to_key(compare), reverse=True)
 
-    result = ''.join(sorted_nums)
+#     result = ''.join(sorted_nums)
 
-    return result
+#     return result
 
 
-input1 = [32, 3, 45]
-result1 = largest_number(input1)
-print(f"Для входа {input1}, результат: {result1}")
+# input1 = [32, 3, 45]
+# result1 = largest_number(input1)
+# print(f"Для входа {input1}, результат: {result1}")
