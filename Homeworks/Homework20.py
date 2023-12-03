@@ -85,7 +85,6 @@
 
 
 # # 20-2:
-# # Не совсем понял то, куда правильно запихнуть общую сумму, поэтому решил реализовать её прямо в таблицу для красоты
 # import pandas as pd
 # import numpy as np
 
@@ -102,11 +101,17 @@
 # df1['Количество:'] = pd.to_numeric(df1['Количество:'])
 # df1['Итог:'] = df1['Количество:'] * df1['Цена:']
 
+# # Добавление сумм по столбцам
+# sum_price = df1['Цена:'].sum()
+# sum_quantity = df1['Количество:'].sum()
+
 # total_sum_np = np.sum(df1['Итог:'].values)
 
 # result1 = sum_all_numbers(df1)
 
-# df1 = df1._append({'Товар:': 'ВСЕГО:', 'Цена:': '', 'Количество:': '', 'Итог:': total_sum_np}, ignore_index=True)
+# # Создание строки с суммами и добавление в DataFrame
+# sum_row = pd.DataFrame({'Товар:': ['СУММА:'], 'Цена:': [sum_price], 'Количество:': [sum_quantity], 'Итог:': [total_sum_np]})
+# df1 = pd.concat([df1, sum_row], ignore_index=True)
 
 # print(result1)
 # print(df1)
@@ -128,7 +133,8 @@ class InfiniteSequence:
         number = next(self.seq)
         if number > 26:
             self.seq = itertools.count(1)
-            next(self.letters)
+            self.letters = itertools.cycle('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+            number = next(self.seq)
         return str(number) + ' ' + next(self.letters)
 
 
